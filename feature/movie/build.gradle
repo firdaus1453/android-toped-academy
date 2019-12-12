@@ -17,6 +17,9 @@ dependencies{
 
     // ui
     implementation Jetpack.recyclerView
+    implementation Android.ktx
+    implementation Android.appCompat
+    implementation Android.constraintLayout
 
     // network
     implementation Retrofit.retrofit

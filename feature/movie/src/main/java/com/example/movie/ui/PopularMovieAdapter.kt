@@ -1,8 +1,10 @@
 package com.example.movie.ui
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movie.R
 import kotlinx.android.synthetic.main.item_movie.view.*
@@ -31,6 +33,15 @@ class PopularMovieAdapter(
             imgPoster.load(movie.posterUrl())
             txtTitle.text = movie.title
             txtYear.text = movie.releaseDate
+
+            itemView.setOnClickListener{
+                onMovieItemClick(movie)
+            }
+        }
+
+        fun onMovieItemClick(movie: Movie){
+            val url = "movie://detail/${movie.id}".toUri()
+            itemView.context.startActivity(Intent(Intent.ACTION_VIEW, url))
         }
 
         companion object {
