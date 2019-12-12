@@ -11,6 +11,8 @@ import org.junit.Test
 import org.mockito.Mockito
 import org.mockito.Mockito.mock
 import retrofit2.Response
+import tokopedia.app.data.repository.moviedetail.MovieDetailRepository
+import tokopedia.app.data.repository.moviedetail.MovieDetailRepositoryImpl
 
 class MovieDetailRepositoryTest {
 

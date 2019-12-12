@@ -2,7 +2,8 @@
 include Modules.app
 
 //features
-//TODO
+include Modules.movie
+include Modules.movieDetail
 
 //libraries
 include Modules.network
