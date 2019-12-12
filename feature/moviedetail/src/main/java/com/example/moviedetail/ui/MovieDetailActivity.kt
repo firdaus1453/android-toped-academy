@@ -6,7 +6,10 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.moviedetail.R
 import com.example.moviedetail.domain.MovieDetailUseCase
 import com.example.moviedetail.factory.MovieDetailFactory
+import kotlinx.android.synthetic.main.activity_movie_detail.*
 import tokopedia.app.abstraction.base.BaseActivity
+import tokopedia.app.abstraction.util.ext.load
+import tokopedia.app.data.entity.Movie
 import tokopedia.app.data.repository.moviedetail.MovieDetailRepository
 import tokopedia.app.data.repository.moviedetail.MovieDetailRepositoryImpl
 import tokopedia.app.data.routes.NetworkServices
@@ -30,7 +33,21 @@ class MovieDetailActivity : BaseActivity() {
 
         viewModel.movie.observe(this, Observer {
             showToast(it.title)
+
+            showMovieDetail(it)
+
         })
+    }
+
+    private fun showMovieDetail(movie: Movie){
+        // set to view
+        imgPoster.load(movie.posterUrl())
+        imgBanner.load(movie.bannerUrl())
+        txtMovieName.text = movie.title
+        txtYear.text = movie.releaseDate
+        txtRating.text = movie.voteAverage.toString()
+        txtVote.text = movie.voteAverage.toString()
+        txtContent.text = movie.overview
     }
 
     private fun showToast(title: String) {
